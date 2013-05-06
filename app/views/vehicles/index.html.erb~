@@ -10,16 +10,16 @@
     <th></th>
   </tr>
 
-<!-- display the list of vehicles here -->
+<!-- <% @vehicles.each do |vehicle| %> -->
   <tr>
-    <td><% # color %></td>
-    <td><% # year %></td>
-    <td><% # license plate number %></td>
-    <td><% # show link  %></td>
-    <td><% # edit link %></td>
-    <td><% # delete link with confirmation %></td>
+    <td><%= "color" %></td>
+    <td><%= "year" %></td>
+    <td><%= "license plate number" %></td>
+    <td><%= "show link"  %></td>
+    <td><%= "edit link" %></td>
+    <td><%= "delete link with confirmation" %></td>
   </tr>
-<% end %>
+<!-- <% end %> -->
 </table>
 
 <br />

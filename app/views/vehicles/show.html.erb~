@@ -36,7 +36,7 @@
 <!-- display the mileages here. You do not need to use a partial -->
 </table>
 
-<%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |
-<%= link_to 'List', vehicles_path %>
 
+<% # link to edit page  %> |
+<% # link to list page  %>
 

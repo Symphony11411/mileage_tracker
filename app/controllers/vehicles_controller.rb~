@@ -15,7 +15,6 @@ class VehiclesController < ApplicationController
   # GET /vehicles/1.xml
   def show
     @vehicle = Vehicle.find(params[:id])
-    @mileages = Mileage.where(:vehicle_id => params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,7 +37,6 @@ class VehiclesController < ApplicationController
   # GET /vehicles/1/edit
   def edit
     @vehicle = Vehicle.find(params[:id])
-    @models = Model.all
   end
 
   # POST /vehicles

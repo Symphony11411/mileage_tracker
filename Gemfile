@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.10'
-# 'sqlite3-ruby' is now just 'sqlite3'
+## 'sqlite3-ruby' is now just 'sqlite3'
 gem 'sqlite3', :require => 'sqlite3'
 
 group :development do
@@ -15,7 +15,7 @@ group :development, :test do
   gem 'rspec-rails'
     gem 'shoulda'
 
-#  gem 'cucumber-rails'
+##  gem 'cucumber-rails'
     gem 'capybara'
     gem 'database_cleaner'
     gem 'pickle'
