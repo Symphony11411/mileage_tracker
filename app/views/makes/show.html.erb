@@ -2,10 +2,9 @@
 
 <p>
   <b>Make:</b>
-  <% # there's only one interesting field in the model. Display it here %>
+  <%= @make.name %>
 </p>
 
-
-<% # create a link to the edit page %> |
-<% # create a link to the list page %>
+<li><%= link_to "Make List",   index_path %></li>
+<li><%= link_to "Edit",   edit_path %></li>
 
