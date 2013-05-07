@@ -1,10 +1,12 @@
 class Mileage < ActiveRecord::Base
   belongs_to :vehicle
-
+  
+  validates_presence_of :vehicle_id
   validates :vehicle_id, :numericality => {
            :only_integer => true,
            :greater_than => 0}
   validates :filled_tank_on, length: { minimum: 8 }
+  validates_presence_of :filled_tank_on
   validates_presence_of :miles
   validates_presence_of :gallons
 end
