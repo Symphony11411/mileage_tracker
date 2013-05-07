@@ -1,10 +1,7 @@
 class MakesController < ApplicationController
   def index
-      @makes
-  end
-
-  def show
-      @make = Make.find(params[:id])
+    @title = "My Makes"
+    @makes = Make.all
   end
 
   def new
@@ -12,17 +9,51 @@ class MakesController < ApplicationController
   end
 
   def create
-      @make = Make.new(params[:make])
+    @make = Make.new(params[:make])
+
+    respond_to do |format|
+      if @make.save
+        format.html { redirect_to(makes_url, :notice => 'Make successfully created.') }
+        format.xml  { render :xml => @make, :status => :created, :location => @make }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @make.errors, :status => :unprocessable_entity }
+      end
+    end
   end
 
   def edit
+    @make = Make.find(params[:id])
   end
 
   def update
-    if @make.update_attributes(params[:make])
-      flash[:success] = "Profile updated"
+      @make = Make.find(params[:id])
+
+    respond_to do |format|
+      if @make.update_attributes(params[:make])
+        format.html { redirect_to(makes_url, :notice => 'Make successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @make.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    @make = Make.find(params[:id])
+    @models = Model.where(:make_id => params[:id])
+    if @models.empty?
+      @make.destroy
+      respond_to do |format|
+        format.html { redirect_to(makes_url, :notice => 'Make successfully deleted') }
+        format.xml  { head :ok }
+      end
     else
-      render 'edit'
+      respond_to do |format|
+          format.html { redirect_to(makes_url, :notice => 'Make not deleted, model(s) found') }
+        format.xml  { head :ok }
+      end
     end
   end
 

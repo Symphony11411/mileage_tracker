@@ -1,6 +1,6 @@
 <h1>New Vehicle Make</h1>
 
-<!-- use the partial to display the form -->
+<%= render 'form' %>
 
-<% # create a link back to the list of makes %>
+<li><%= link_to "Makes List", index_path   %></li>
 

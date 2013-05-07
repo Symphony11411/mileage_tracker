@@ -1,3 +1,4 @@
+<h1>Show Vehicle</h1>
 <p id="notice"><%= notice %></p>
 <div style="float:left; width: 40%">
 <p>
@@ -20,10 +21,47 @@
   <%= @vehicle.license_plate_number %>
 </p>
 </div>
-<div>
-<!-- insert the mileage form here -->
+<div style="float:right; width: 40%">
+<%= form_for @mileage, :id => 'embed-mileage-id' do |f| %>
+  <% if @mileage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mileage.errors.count, "error") %> prevented this mileage from being saved:</h2>
 
+      <ul>
+      <% @mileage.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<!--<form action="/vehicles/<%= @vehicle.id %>" class="new_mileage" id="new_mileage" method="post">-->
+
+  <div class="field">
+    <%= hidden_field_tag 'mileage[vehicle_id]', @vehicle.id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :filled_tank_on %><br />
+    <%= date_select :mileage, :filled_tank_on, :order => [:month, :day, :year] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :miles %><br />
+    <%= f.text_field :miles %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gallons %><br />
+    <%= f.text_field :gallons %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+<!--    <input id="submit" name="commit" type="submit" value="Create Mileage" />-->
+  </div>
+<% end %>
 </div>
+
 <div style="clear:both;">
 <h1>Mileages</h1>
 
@@ -33,10 +71,15 @@
     <td>Miles</td>
     <td>Gallons</td>
   </tr>
-<!-- display the mileages here. You do not need to use a partial -->
+  <% @vehicle.mileages.each do |mileage| %>
+    <tr>
+      <td><%= mileage.filled_tank_on %></td>
+      <td><%= mileage.miles %></td>
+      <td><%= mileage.gallons %></td>
+    </tr>
+  <% end %>
 </table>
 
 <%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |
 <%= link_to 'List', vehicles_path %>
-
 

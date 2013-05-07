@@ -1,16 +1,23 @@
-<h1>My Makes</h1>
+<h1><%= @title %></h1>
 
 <table class="table">
   <tr>
     <th>Name</th>
   </tr>
 
-<!-- display the list of makes here
-     you do not need to use a partial -->
+<% @makes.each do |make| %>
+  <tr>
+    <td><%= make.name %></td>
+    <td><%= link_to 'Edit', edit_make_path(make) %></td>
+    <td><%= link_to 'Delete', make, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
 
 </table>
 
 <br />
 
-<% # create a link the "new" make page %>
+<%= link_to 'New Make', new_make_path %>
 

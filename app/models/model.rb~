@@ -6,8 +6,6 @@ class Model < ActiveRecord::Base
   def mymake
     "#{make.name}"
   end
-
-  validates :name, presence:true
 end
 
 # == Schema Information

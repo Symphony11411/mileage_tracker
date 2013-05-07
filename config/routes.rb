@@ -1,10 +1,5 @@
 MileageTracker::Application.routes.draw do
-  
-  match '/edit',  to: 'make#edit'
-  match '/index',  to: 'make#index'
-  match '/show',  to: 'make#show'
-  
-  
+
   resources :vehicles
   resources :makes
   resources :models

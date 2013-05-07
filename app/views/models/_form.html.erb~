@@ -1,6 +1,6 @@
 <!-- create a form that can be used by both the new and edit actions -->
 
-<% form_for(@model) do |f| %>
+<% # start form here %>
   <% if @model.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@model.errors.count, "error") %> prohibited this model from being saved:</h2>
@@ -14,18 +14,6 @@
   <% end %>
 
 <!-- fill in the rest of the form here -->
-  <div class="field">
-    <label for="model_make_id">Make</label><br />
-    
-    <%= select_tag "model[make_id]", options_from_collection_for_select(@makes,
-    "id", "name") %>
-  </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<% #end the form here  %>
+

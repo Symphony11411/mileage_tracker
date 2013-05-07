@@ -2,15 +2,25 @@
 
 <table class="table">
   <tr>
+    <th>Make</th>
     <th>Name</th>
+    <th></th>
+    <th></th>
   </tr>
 
-<!-- display the list of models here
-     you do not need to use a partial -->
+<% @models.each do |model| %>
+  <tr>
+    <td><%= model.mymake %></td>
+    <td><%= model.name %></td>
+    <td><%= link_to 'Edit', edit_model_path(model) %></td>
+    <td><%= link_to 'Delete', model, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
 
 </table>
 
 <br />
 
-<% # create a link the "new" model page %>
+<%= link_to 'New Model', new_model_path %>
 

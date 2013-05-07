@@ -1,6 +1,5 @@
 class MileagesController < ApplicationController
   def index
-    store_location
     @mileages = Mileage.all
   end
 
@@ -17,11 +16,10 @@ class MileagesController < ApplicationController
 
     if mileage.save
       flash[:notice] = 'Mileage entry was successfully created'
-      redirect_back_or mileages_path
+      redirect_to mileages_path
     else
       @vehicles = Vehicle.all
-      flash[:notice] = 'Mileage entry could not be saved'
-      redirect_back_or new_mileage_path
+      render :action => 'new'
     end
   end
 

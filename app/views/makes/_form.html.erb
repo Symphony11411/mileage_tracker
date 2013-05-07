@@ -1,6 +1,6 @@
 <!-- create a form that can be used by both the new and edit actions -->
 
-<%= form_for(@make) do |f| %>
+<% form_for(@make) do |f| %>
   <% if @make.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@make.errors.count, "error") %> prohibited this make from being saved:</h2>
@@ -12,9 +12,13 @@
       </ul>
     </div>
   <% end %>
-
-  <%= f.label :name %><%= f.text_field :name %>
-  <%= f.submit "Add Make", class: "btn btn-large btn-primary" %>
-
+<!-- fill in the rest of the form here -->
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>
 
